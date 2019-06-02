@@ -1,8 +1,12 @@
-#endpoint: ''endpoint: https://eu1.prisma.sh/abhinav-vinci-dd33f6/hackernews-node/dev
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/abhinav-vinci-dd33f6/hackernews-node/dev
 
 datamodel: datamodel.prisma
 generate: 
   - generator: javascript-client
     output: ../src/generated/prisma-client
+hooks:
+  post-deploy:
+    - prisma generate 
     
     
