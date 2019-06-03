@@ -31,6 +31,10 @@ type Link {
   postedBy: User
 }
 
+type Subscription {
+    newLink: Link
+}
+
 
 
 
