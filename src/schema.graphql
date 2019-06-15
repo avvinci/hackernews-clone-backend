@@ -1,3 +1,38 @@
+
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  links: [Link!]!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+
+type Link {
+  id: ID!
+  description: String!
+  url: String!
+  postedBy: User
+  votes: [Vote!]!
+}
+
+type Subscription {
+    newLink: Link
+    newVote: Vote
+}
+
+type Vote {
+    id:  ID!
+    user: User!
+    link: Link!
+}
+
+
 type Query{
     info: String!
     feed: [Link!]!
@@ -9,32 +44,7 @@ type Mutation {
   post(url: String!, description: String!): Link!
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
+  vote(linkId: ID!): Vote 
 }
-
-type AuthPayload {
-  token: String
-  user: User
-}
-
-type User {
-  id: ID!
-  name: String!
-  email: String!
-  links: [Link!]!
-}
-
-
-type Link {
-  id: ID!
-  description: String!
-  url: String!
-  postedBy: User
-}
-
-type Subscription {
-    newLink: Link
-}
-
-
 
 
